@@ -9,6 +9,7 @@ pub struct ToolError {
     value: u32,
 }
 
+/// Data representation of a drawing tool in a reMarkable document line
 #[derive(Debug, PartialEq)]
 pub enum Tool {
     Brush,
@@ -26,8 +27,10 @@ pub enum Tool {
 }
 
 impl TryFrom<u32> for Tool {
+    /// Used to represent a [u32] that does not map to a known `Tool`
     type Error = ToolError;
 
+    /// Attempts to map a [u32] value to a known and supported `Tool`
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         match value {
             0x00 | 0x0c => Ok(Tool::Brush),
@@ -48,6 +51,9 @@ impl TryFrom<u32> for Tool {
 }
 
 impl<'i> Parse<'i> for Tool {
+    /// Attempts to parse a `Tool` from a byte sequence
+    ///
+    /// A tool is represented by a value-constrained, little-endian, 32-bit integer.
     fn parse(input: &'i [u8]) -> nom::IResult<&'i [u8], Self> {
         map_res(le_u32, Tool::try_from)(input)
     }

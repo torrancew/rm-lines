@@ -2,6 +2,7 @@ use crate::Parse;
 
 use nom::{combinator::map, number::complete::le_f32, sequence::tuple};
 
+/// Data representation of a point in a reMarkable document line
 #[derive(Debug, PartialEq)]
 pub struct Point {
     pub x: f32,
@@ -13,6 +14,9 @@ pub struct Point {
 }
 
 impl<'i> Parse<'i> for Point {
+    /// Attempts to parse a `Point` from a byte sequence
+    ///
+    /// A point is represented by six little-endian, 32-bit floating point values.
     fn parse(input: &'i [u8]) -> nom::IResult<&'i [u8], Self> {
         map(
             tuple((le_f32, le_f32, le_f32, le_f32, le_f32, le_f32)),

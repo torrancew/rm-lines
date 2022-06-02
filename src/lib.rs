@@ -1,3 +1,12 @@
+//! Binary parser for v5 of the reMarkable .lines binary format
+//!
+//! While similar to (and inspired by) [`lines-are-rusty`][rusty-lines],
+//! this crate focuses *solely* on parsing the `.rm` files generated
+//! by a reMarkable tablet (eg an individual notebook page). Other functionality
+//! should be layered in higher-level crates.
+//!
+//! [rusty-lines]: https://github.com/ax3l/lines-are-rusty
+
 mod color;
 pub use color::Color;
 
@@ -34,6 +43,13 @@ mod private {
     impl Sealed for crate::Version {}
 }
 
+/// Attempts to parse the implementing type from a byte sequence
+///
+/// This trait is currently built on the [nom][nom] parser combinator library,
+/// and leaks details of this implementation. As such, it is [sealed][sealed-traits].
+///
+/// [nom]: https://docs.rs/nom/latest/nom/
+/// [sealed-traits]: https://rust-lang.github.io/api-guidelines/future-proofing.html#sealed-traits-protect-against-downstream-implementations-c-sealed
 pub trait Parse<'i>: private::Sealed {
     fn parse(input: &'i [u8]) -> nom::IResult<&'i [u8], Self>;
 }
