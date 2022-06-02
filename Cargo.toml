@@ -4,6 +4,9 @@ description = "Binary parser for the reMarkable lines (.rm) file format"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
+repository = "https://github.com/torrancew/rm-lines"
+keywords = ["remarkable"]
+categories = ["parser-implementations"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
