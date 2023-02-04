@@ -10,7 +10,7 @@ pub struct ToolError {
 }
 
 /// Data representation of a drawing tool in a reMarkable document line
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Tool {
     Brush,
     Pencil,

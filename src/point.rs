@@ -3,7 +3,7 @@ use crate::Parse;
 use nom::{combinator::map, number::complete::le_f32, sequence::tuple};
 
 /// Data representation of a point in a reMarkable document line
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Point {
     pub x: f32,
     pub y: f32,

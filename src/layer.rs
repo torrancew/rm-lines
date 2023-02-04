@@ -3,7 +3,7 @@ use crate::{Line, Parse};
 use nom::{combinator::map, multi::length_count, number::complete::le_u32};
 
 /// Data representation of a layer in a reMarkable document page
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Layer {
     pub lines: Vec<Line>,
 }

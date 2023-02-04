@@ -10,7 +10,7 @@ pub struct ColorError {
 }
 
 /// Data representation of an exported color in a reMarkable document line
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Color {
     Black,
     Grey,

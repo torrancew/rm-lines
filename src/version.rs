@@ -10,7 +10,7 @@ pub struct VersionError {
 }
 
 /// Data representation of the file format version used for a reMarkable document
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Version {
     V3,
     V5,

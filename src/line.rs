@@ -12,7 +12,7 @@ use nom::{
 /// A `Line` combines a [Tool], a [Color], a size and a series of [Point]s.
 /// It is used to represent a continuous, joined section of [Point]s, such
 /// as a continuous pen stroke.
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Line {
     pub tool: Tool,
     pub color: Color,

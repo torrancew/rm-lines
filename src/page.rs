@@ -5,7 +5,7 @@ use nom::{combinator::map, multi::length_count, number::complete::le_u32, sequen
 /// Data representation of a page in a reMarkable document
 ///
 /// This is the type used to represent a parsed `.rm` file
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Page {
     pub version: Version,
     pub layers: Vec<Layer>,
